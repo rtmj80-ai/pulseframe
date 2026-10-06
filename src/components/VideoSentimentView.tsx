@@ -105,10 +105,11 @@ export const VideoSentimentView: React.FC<VideoSentimentViewProps> = ({
 
     setIsTestingComment(true);
     try {
-      const response = await fetch('/api/youtube/analyze-video', {
+      const response = await fetch('/api/youtube?action=analyze-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          action: 'analyze-video',
           videoInput: selectedVideo.title,
           comments: [text]
         })
@@ -138,10 +139,11 @@ export const VideoSentimentView: React.FC<VideoSentimentViewProps> = ({
         .map((l) => l.trim())
         .filter(Boolean);
 
-      const response = await fetch('/api/youtube/analyze-video', {
+      const response = await fetch('/api/youtube?action=analyze-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          action: 'analyze-video',
           videoInput: newVideoUrlOrTitle.trim(),
           comments: lines
         })

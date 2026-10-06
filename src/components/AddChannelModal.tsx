@@ -33,10 +33,10 @@ export const AddChannelModal: React.FC<AddChannelModalProps> = ({
     setIsLoading(true);
     setErrorMsg(null);
     try {
-      const response = await fetch('/api/youtube/resolve-channel', {
+      const response = await fetch('/api/youtube?action=resolve-channel', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: trimmed, category })
+        body: JSON.stringify({ action: 'resolve-channel', query: trimmed, category })
       });
 
       if (!response.ok) {

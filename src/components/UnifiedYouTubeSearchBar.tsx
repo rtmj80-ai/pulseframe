@@ -163,10 +163,11 @@ export const UnifiedYouTubeSearchBar: React.FC<UnifiedYouTubeSearchBarProps> = (
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/youtube/resolve-channel', {
+      const response = await fetch('/api/youtube?action=resolve-channel', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          action: 'resolve-channel',
           query: clean,
           category: 'Hardware & Creator Tech'
         })
@@ -425,10 +426,11 @@ export const UnifiedYouTubeSearchBar: React.FC<UnifiedYouTubeSearchBarProps> = (
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/youtube/analyze-video', {
+      const response = await fetch('/api/youtube?action=analyze-video', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          action: 'analyze-video',
           videoInput: clean,
           comments: []
         })
